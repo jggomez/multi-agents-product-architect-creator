@@ -53,7 +53,6 @@ The system eliminates manual hand-offs between product, architecture, and design
 ### System Diagram
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#1e293b', 'primaryTextColor': '#f8fafc', 'primaryBorderColor': '#334155', 'lineColor': '#334155', 'secondaryColor': '#0f172a', 'tertiaryColor': '#1e293b', 'edgeLabelBackground':'#f8fafc', 'nodeBorder':'#334155' }}}%%
 graph TB
     subgraph "Client Layer"
         FE["<b>Frontend</b><br/>(Agentic Studio UI)"]
@@ -158,7 +157,6 @@ sequenceDiagram
 ### Deployment Architecture
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#1e293b', 'primaryTextColor': '#f8fafc', 'primaryBorderColor': '#334155', 'lineColor': '#334155', 'secondaryColor': '#0f172a', 'tertiaryColor': '#1e293b', 'edgeLabelBackground':'#f8fafc' }}}%%
 graph LR
     subgraph "Google Cloud Run"
         direction TB
