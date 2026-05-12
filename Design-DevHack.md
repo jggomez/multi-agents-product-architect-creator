@@ -9,7 +9,7 @@ These stories follow the standard INVEST criteria, focusing on the specific role
 | **US.2** | **Software Architect** | I want the **Software Architect Agent** to consume generated stories and quality attributes. | To identify architectural patterns, tactics, and generate ADRs (Architecture Decision Records). |
 | **US.3** | **UX Designer** | I want the **UX-UI Expert Agent** to utilize the **Toolset Stitch (MCP)**. | To generate standardized UI/UX mockups based on the functional requirements identified. |
 | **US.4** | **QA / Critic** | I want the **UX-UI Critic Agent** to analyze the expert's output in an iterative loop. | To ensure the design adheres to usability heuristics and project constraints before finalization. |
-| **US.5** | **Stakeholder** | I want the system to consolidate all outputs into a **PDF Architecture Report**. | To have a formal, versioned document for project sign-off and developer hand-off. |
+| **US.5** | **Stakeholder** | I want the system to consolidate all outputs into a **Consolidated Markdown Report**. | To have a formal, versioned document for project sign-off and developer hand-off. |
 | **US.6** | **DevOps Lead** | I want each agent to be deployed as an independent **Cloud Run** service. | To ensure granular scalability and independent lifecycle management for each specialized agent. |
 
 ---
@@ -41,8 +41,8 @@ The system is designed following **Micro-Agent Architecture** principles, priori
     * *Choice:* Using a streamable `serverUrl` allows the UX Agent to access external UI generation capabilities in real-time without bloating the agent's core logic.
 * **Knowledge Base:** `GetArchitectureFoundations`.
     * *Choice:* A RAG-lite tool providing static best practices to ground the Software Architect agent in industry standards (ISO/IEC 25010).
-* **Output Engine:** `CreateArchitectureReport`.
-    * *Choice:* A dedicated tool to transform Markdown/JSON artifacts into structured **PDFs**, ensuring the final deliverable is professional and portable.
+* **Output Engine:** `generate_report`.
+    * *Choice:* A dedicated tool to transform Markdown artifacts into a single structured **Markdown Report**, ensuring the final deliverable is professional and portable.
 
 ### Architecture Diagram (C4 Level 2 - Container Context)
 

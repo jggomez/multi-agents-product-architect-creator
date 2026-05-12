@@ -29,7 +29,7 @@ def submit_review(approved: bool, feedback: str):
     """Submits the Critic's final verdict on the current design iteration.
 
     This tool controls the design iteration loop. If approved=True, the loop
-    ends and the pipeline proceeds to report generation. If approved=False,
+    ends and the final results are returned to the user. If approved=False,
     the UX Designer receives the feedback for another iteration.
 
     Call this tool ONCE per evaluation, AFTER saving 'ux_feedback.md'.
@@ -184,7 +184,7 @@ else:
 # A2A Runner
 runner = Runner(
     agent=critic_agent,
-    app_name="critic-agent",
+    app_name="ux-pipeline",
     artifact_service=artifact_service,
     session_service=InMemorySessionService(),
 )

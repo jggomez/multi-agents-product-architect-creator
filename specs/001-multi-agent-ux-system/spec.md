@@ -37,14 +37,14 @@ The **UX Expert Agent** utilizes the **Toolset Stitch (MCP)** tool to generate m
 
 ### User Story 4 - Artifact Consolidation (Priority: P2)
 
-A specialized consolidation tool gathers all artifacts (Stories, ADRs, Mockups) and generates a PDF report.
+The Orchestrator utilizes a consolidation tool to gather all artifacts (Stories, ADRs, Mockups) and generate a single Markdown report.
 
 ## Requirements *(mandatory)*
 
 ### Functional Requirements
 
 - **FR-001**: System MUST be built using **Google ADK (Agent Development Kit)**.
-- **FR-002**: Agents MUST use **ADK FunctionTools** for external interactions (MCP, PDF generation).
+- **FR-002**: Agents MUST use **ADK FunctionTools** for external interactions (MCP, Report generation).
 - **FR-003**: State and data exchange between agents MUST be handled via **ADK Artifacts** (`SaveDocument`, `GetDocument`).
 - **FR-004**: Orchestration MUST use ADK native patterns (`SequentialAgent`, `ParallelAgent`, or custom loops).
 - **FR-005**: Agents MUST be deployable to Cloud Run as independent agentic units.
@@ -53,7 +53,7 @@ A specialized consolidation tool gathers all artifacts (Stories, ADRs, Mockups) 
 
 - **Agent**: An ADK `Agent` instance with specific `instruction` and `tools`.
 - **Artifact**: A versioned document in the ADK storage (e.g., `user_stories.json`, `architecture_decisions.md`).
-- **Tool**: A `FunctionTool` providing capabilities like `stitch_ui_gen` or `pdf_export`.
+- **Tool**: A `FunctionTool` providing capabilities like `stitch_ui_gen` or `generate_report`.
 
 ## Success Criteria *(mandatory)*
 
@@ -61,7 +61,7 @@ A specialized consolidation tool gathers all artifacts (Stories, ADRs, Mockups) 
 
 - **SC-001**: 100% of inter-agent data exchange is performed via ADK Artifacts.
 - **SC-002**: UX refinement loop completes at least 2 iterations before finalization.
-- **SC-003**: Final PDF report is generated automatically from accumulated artifacts.
+- **SC-003**: Final Markdown report is generated automatically from accumulated artifacts.
 
 ### Validation Requirements
 

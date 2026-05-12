@@ -21,7 +21,7 @@ export const Uploader = {
                     <i data-lucide="file-plus" class="w-4 h-4"></i>
                     Select File
                 </label>
-                <input type="file" id="file-input" class="hidden" accept=".pdf,.md,.txt">
+                <input type="file" id="file-input" class="hidden" accept=".md,.txt">
             </div>
             
             <div id="file-preview" class="hidden space-y-6">

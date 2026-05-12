@@ -52,7 +52,7 @@ export const ReportViewer = {
                         <div class="w-px h-6 bg-slate-800 mx-2"></div>
                         <button id="download-report" class="btn-primary py-2 px-4 text-sm flex items-center gap-2">
                             <i data-lucide="download" class="w-4 h-4"></i>
-                            Download PDF
+                            Download Report (.md)
                         </button>
                     </div>
                 </div>
@@ -82,7 +82,7 @@ export const ReportViewer = {
     getArtifactIcon(filename) {
         if (filename.includes('stitch') || filename.includes('ux')) return 'monitor';
         if (filename.includes('json')) return 'code-2';
-        if (filename.includes('pdf')) return 'file-text';
+        if (filename.includes('report') || filename.includes('final')) return 'file-text';
         return 'package';
     }
 };

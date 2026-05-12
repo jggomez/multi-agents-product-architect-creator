@@ -115,7 +115,7 @@ else:
 # A2A Runner
 runner = Runner(
     agent=architect_agent,
-    app_name="architect-agent",
+    app_name="ux-pipeline",
     artifact_service=artifact_service,
     session_service=InMemorySessionService(),
 )

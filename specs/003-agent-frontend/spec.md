@@ -47,7 +47,7 @@ As a user, I want to view the final report and any generated design artifacts di
 
 **Acceptance Scenarios**:
 
-1. **Given** the orchestration is complete, **When** the final report is received, **Then** it is rendered as a beautiful, readable document with a "Download PDF/Markdown" option.
+1. **Given** the orchestration is complete, **When** the final report is received, **Then** it is rendered as a beautiful, readable document with a "Download Report (.md)" option.
 2. **Given** design artifacts were created (e.g., Stitch projects), **When** the user clicks on the artifact links, **Then** they are opened or previewed in the appropriate viewer.
 
 ---
@@ -63,7 +63,7 @@ As a user, I want to view the final report and any generated design artifacts di
 ### Functional Requirements
 
 - **FR-001**: System MUST provide a modern web interface with a focus on "Premium Aesthetics" (glassmorphism, smooth transitions).
-- **FR-002**: System MUST allow users to upload files in PDF, Markdown, and plain text formats.
+- **FR-002**: System MUST allow users to upload requirement files in Markdown and plain text formats.
 - **FR-003**: System MUST trigger the Orchestrator Agent via a REST or WebSocket API call upon submission.
 - **FR-004**: System MUST display a live activity log showing interactions between the Analyst, Architect, UX Designer, and Critic.
 - **FR-005**: System MUST render Markdown results using a high-fidelity preview component.

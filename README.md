@@ -55,11 +55,11 @@ The system eliminates manual hand-offs between product, architecture, and design
 ```mermaid
 graph TB
     subgraph "Client Layer"
-        FE["Frontend<br/>(Agentic Studio UI)"]
+        FE["<b>Frontend</b><br/>(Agentic Studio UI)"]
     end
 
     subgraph "Orchestration Layer"
-        ORCH["Orchestrator Agent<br/>(Starlette + ADK)"]
+        ORCH["<b>Orchestrator Agent</b><br/>(Starlette + ADK)"]
     end
 
     subgraph "Agent Layer"
@@ -99,22 +99,27 @@ graph TB
 
     ORCH -- "Prompt/Response Validation" --> MA
 
-    style FE fill:#1e293b,stroke:#6366f1,color:#e2e8f0
-    style ORCH fill:#1e293b,stroke:#ec4899,color:#e2e8f0
-    style AN fill:#0f172a,stroke:#38bdf8,color:#e2e8f0
-    style AR fill:#0f172a,stroke:#38bdf8,color:#e2e8f0
-    style UX fill:#0f172a,stroke:#38bdf8,color:#e2e8f0
-    style CR fill:#0f172a,stroke:#38bdf8,color:#e2e8f0
-    style GEMINI fill:#0d1117,stroke:#a78bfa,color:#e2e8f0
-    style STITCH fill:#0d1117,stroke:#a78bfa,color:#e2e8f0
-    style GCS fill:#0d1117,stroke:#a78bfa,color:#e2e8f0
-    style MA fill:#0d1117,stroke:#a78bfa,color:#e2e8f0
+    %% Technical Premium Styles
+    style FE fill:#0f172a,stroke:#38bdf8,stroke-width:2px,color:#f8fafc
+    style ORCH fill:#1e1b4b,stroke:#818cf8,stroke-width:2px,color:#f8fafc
+    style AN fill:#0f172a,stroke:#2dd4bf,stroke-width:2px,color:#f8fafc
+    style AR fill:#0f172a,stroke:#2dd4bf,stroke-width:2px,color:#f8fafc
+    style UX fill:#0f172a,stroke:#2dd4bf,stroke-width:2px,color:#f8fafc
+    style CR fill:#0f172a,stroke:#2dd4bf,stroke-width:2px,color:#f8fafc
+    style GEMINI fill:#312e81,stroke:#a78bfa,stroke-width:2px,color:#f8fafc
+    style STITCH fill:#312e81,stroke:#a78bfa,stroke-width:2px,color:#f8fafc
+    style GCS fill:#312e81,stroke:#a78bfa,stroke-width:2px,color:#f8fafc
+    style MA fill:#312e81,stroke:#a78bfa,stroke-width:2px,color:#f8fafc
+
+    classDef default font-family:Inter,font-size:14px;
 ```
 
 ### Agent Communication Flow
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#1e293b', 'primaryTextColor': '#f8fafc', 'primaryBorderColor': '#334155', 'lineColor': '#38bdf8', 'secondaryColor': '#0f172a', 'tertiaryColor': '#1e293b', 'noteBkgColor': '#1e293b', 'noteTextColor': '#38bdf8', 'actorBkg': '#0f172a', 'actorBorder': '#334155', 'actorTextColor': '#f8fafc' }}}%%
 sequenceDiagram
+    autonumber
     participant U as User (Frontend)
     participant O as Orchestrator
     participant AN as Analyst
@@ -124,7 +129,7 @@ sequenceDiagram
 
     U->>O: Upload requirements document
     
-    rect rgb(15, 23, 42)
+    rect rgba(56, 189, 248, 0.15)
         Note over O,AR: Phase 1 — Requirements Pipeline (SequentialAgent)
         O->>AN: "Analyze these business goals"
         AN-->>O: user_stories.md (artifact)
@@ -132,7 +137,7 @@ sequenceDiagram
         AR-->>O: adr_collection.md (artifact)
     end
     
-    rect rgb(30, 15, 42)
+    rect rgba(236, 72, 153, 0.15)
         Note over O,CR: Phase 2 — Design Iteration Loop (LoopAgent, max 3)
         loop Until APPROVED or max_iterations
             O->>UX: "Generate/refine UI mockups"
@@ -142,7 +147,7 @@ sequenceDiagram
         end
     end
 
-    rect rgb(15, 30, 20)
+    rect rgba(34, 197, 94, 0.15)
         Note over O: Phase 3 — Report Generation
         O->>O: generate_report() aggregates all artifacts
         O-->>U: Consolidated Markdown report
@@ -269,7 +274,7 @@ Integrates **Model Armor** security guardrails for input/output validation.
 
 **Agentic Studio UI** is a modern, glassmorphism-styled web interface that provides:
 
-- **Document Upload** — Drag-and-drop or file picker for `.txt`, `.md`, `.pdf`, `.docx` files.
+- **Document Upload** — Drag-and-drop or file picker for `.txt`, `.md` files.
 - **Live Activity Feed** — Real-time event stream showing agent actions during orchestration.
 - **Report Viewer** — Rendered Markdown report with all generated artifacts.
 - **Session History** — Local storage-backed history of past orchestration runs.

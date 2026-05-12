@@ -49,13 +49,14 @@ export const ActivityLog = {
         if (event.type === 'SYSTEM') return { bg: 'bg-indigo-500/20', text: 'text-indigo-400' };
         
         const agentColors = {
-            'Analyst': { bg: 'bg-blue-500/20', text: 'text-blue-400' },
-            'Architect': { bg: 'bg-purple-500/20', text: 'text-purple-400' },
-            'UX Designer': { bg: 'bg-pink-500/20', text: 'text-pink-400' },
-            'Critic': { bg: 'bg-amber-500/20', text: 'text-amber-400' }
+            'analyst': { bg: 'bg-blue-500/20', text: 'text-blue-400' },
+            'architect': { bg: 'bg-purple-500/20', text: 'text-purple-400' },
+            'ux_designer': { bg: 'bg-pink-500/20', text: 'text-pink-400' },
+            'critic': { bg: 'bg-amber-500/20', text: 'text-amber-400' },
+            'orchestrator': { bg: 'bg-emerald-500/20', text: 'text-emerald-400' }
         };
 
-        return agentColors[event.agent] || { bg: 'bg-emerald-500/20', text: 'text-emerald-400' };
+        return agentColors[event.agent] || { bg: 'bg-slate-500/20', text: 'text-slate-400' };
     },
 
     getEventIcon(event) {
@@ -63,10 +64,11 @@ export const ActivityLog = {
         if (event.type === 'SYSTEM') return 'settings';
         
         const agentIcons = {
-            'Analyst': 'search',
-            'Architect': 'layout',
-            'UX Designer': 'palette',
-            'Critic': 'shield-check'
+            'analyst': 'search',
+            'architect': 'layout',
+            'ux_designer': 'palette',
+            'critic': 'shield-check',
+            'orchestrator': 'bot'
         };
 
         return agentIcons[event.agent] || 'bot';

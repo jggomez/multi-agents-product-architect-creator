@@ -197,7 +197,7 @@ else:
 
 runner = Runner(
     agent=ux_agent,
-    app_name="ux-designer-agent",
+    app_name="ux-pipeline",
     artifact_service=artifact_service,
     session_service=InMemorySessionService(),
 )

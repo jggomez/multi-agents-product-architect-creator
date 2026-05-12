@@ -79,13 +79,13 @@
 
 ---
 
-## Phase 6: User Story 4 - Artifact Consolidation & PDF Report (Priority: P2)
+## Phase 6: User Story 4 - Artifact Consolidation & Markdown Report (Priority: P2)
 
-**Goal**: Aggregate all generated artifacts into a single PDF Architecture Report.
+**Goal**: Aggregate all generated artifacts into a single Consolidated Markdown Report.
 
-**Independent Test**: Run the report tool with a list of artifact IDs and verify a valid PDF is produced.
+**Independent Test**: Run the report tool and verify a valid `final_report.md` artifact is produced.
 
-- [x] T025 [US4] Implement PDF generation tool using WeasyPrint in `agents/orchestrator/tools/report_tool.py`
+- [x] T025 [US4] Implement Markdown consolidation tool in `agents/orchestrator/tools/report_tool.py`
 - [x] T026 [US4] Implement artifact aggregation logic in `agents/orchestrator/app/agent.py`
 - [ ] T027 [US4] Verify final report generation with `agents-cli run`
 
