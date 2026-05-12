@@ -1,0 +1,20 @@
+{
+  "name": "analyst",
+  "description": "User Story Analyst Agent that converts business goals into structured requirements.",
+  "url": "http://analyst:8000/a2a/app",
+  "version": "0.1.0",
+  "capabilities": {
+    "can_receive_task_updates": true,
+    "can_send_task_updates": true
+  },
+  "skills": [
+    {
+      "id": "analyst-model",
+      "name": "model",
+      "description": "I am a User Story Analyst. I convert business goals into structured User Stories and Acceptance Criteria.",
+      "tags": ["llm", "requirements"]
+    }
+  ],
+  "default_input_modes": ["text/plain"],
+  "default_output_modes": ["text/plain"]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "critic",
+  "description": "UX Critic Agent that reviews UI/UX mockups based on heuristic principles.",
+  "url": "http://critic:8000/a2a/app",
+  "version": "0.1.0",
+  "capabilities": {
+    "can_receive_task_updates": true,
+    "can_send_task_updates": true
+  },
+  "skills": [
+    {
+      "id": "critic-model",
+      "name": "model",
+      "description": "I am a UX Critic. I provide critical feedback on UI/UX designs to improve usability.",
+      "tags": ["llm", "critic", "usability"]
+    }
+  ],
+  "default_input_modes": ["text/plain"],
+  "default_output_modes": ["text/plain"]
+}

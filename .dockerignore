@@ -1,0 +1,17 @@
+.git
+.gitignore
+.dockerignore
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.venv
+venv
+ENV
+env
+.agents-cli
+artifacts
+.vscode
+.idea
+.env
+.env.*

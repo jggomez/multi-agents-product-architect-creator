@@ -1,0 +1,51 @@
+substitutions:
+  _REGION: us-central1
+  _REPO_NAME: agent-ux
+  _LOGS_BUCKET: docs-agents-software
+  _TAG: latest
+  _ORCHESTRATOR_URL: 'https://orchestrator-XXXXXXXXXX-uc.a.run.app'
+
+steps:
+  # Build the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/frontend:${_TAG}'
+      - '-t'
+      - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/frontend:latest'
+      - '.'
+    dir: 'frontend'
+
+  # Push the container image to Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - '--all-tags'
+      - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/frontend'
+
+  # Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'frontend'
+      - '--image'
+      - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/frontend:${_TAG}'
+      - '--region'
+      - '${_REGION}'
+      - '--platform'
+      - 'managed'
+      - '--cpu'
+      - '1'
+      - '--memory'
+      - '512Mi'
+      - '--allow-unauthenticated'
+      - '--set-env-vars'
+      - 'ORCHESTRATOR_URL=${_ORCHESTRATOR_URL}'
+      - '--port'
+      - '8080'
+
+options:
+  logging: CLOUD_LOGGING_ONLY

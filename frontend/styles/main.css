@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --glass-bg: rgba(15, 23, 42, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-blur: blur(16px);
+  --accent-primary: #6366f1; /* Indigo 500 */
+  --accent-secondary: #ec4899; /* Pink 500 */
+  --status-idle: #94a3b8;
+  --status-processing: #6366f1;
+  --status-completed: #10b981;
+  --status-error: #f43f5e;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-950 text-slate-200 antialiased min-h-screen selection:bg-indigo-500/30;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(236, 72, 153, 0.1) 0px, transparent 50%);
+  }
+}
+
+@layer components {
+  .glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    @apply rounded-2xl shadow-xl transition-all duration-300;
+  }
+
+  .glass-card:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    @apply shadow-indigo-500/10;
+  }
+
+  .glass-input {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    @apply rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all;
+  }
+
+  .btn-primary {
+    @apply bg-indigo-600 hover:bg-indigo-500 text-white font-medium py-2 px-6 rounded-xl transition-all 
+           active:scale-95 shadow-lg shadow-indigo-500/25 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .agent-badge {
+    @apply px-2 py-1 rounded-md text-xs font-semibold uppercase tracking-wider;
+  }
+}
+
+/* Custom Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInFromLeft {
+  from { transform: translateX(-1rem); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.animate-in {
+  animation-duration: 400ms;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-in { animation-name: fadeIn; }
+.slide-in-from-left-2 { animation-name: slideInFromLeft; }
+.zoom-in-95 { animation-name: zoomIn; }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-800 rounded-full hover:bg-slate-700;
+}
+
+/* Glass Detail Utilities */
+.glass-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.03) 30%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.03) 70%,
+    transparent 100%
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+}
+
+/* Status Transitions */
+.status-indicator {
+  @apply w-2 h-2 rounded-full transition-colors duration-500;
+}
+
+.status-idle { background-color: var(--status-idle); }
+.status-processing { background-color: var(--status-processing); @apply animate-pulse; }
+.status-completed { background-color: var(--status-completed); }
+.status-error { background-color: var(--status-error); }
+
+/* Responsive Adjustments */
+@media (max-width: 640px) {
+  .glass-card {
+    @apply rounded-xl p-4;
+  }
+}
+
+/* Tooltip Simulation (Simple) */
+[data-tooltip] {
+  position: relative;
+}
+
+[data-tooltip]:hover::before {
+  content: attr(data-tooltip);
+  @apply absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-slate-900 text-slate-200 text-[10px] rounded border border-white/10 whitespace-nowrap z-50;
+}

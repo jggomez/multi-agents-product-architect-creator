@@ -1,0 +1,73 @@
+version: '3.8'
+
+services:
+  analyst:
+    build: ./agents/analyst
+    ports:
+      - "8001:8000"
+    environment:
+      - GOOGLE_CLOUD_PROJECT=${GOOGLE_CLOUD_PROJECT}
+      - GOOGLE_CLOUD_LOCATION=${GOOGLE_CLOUD_LOCATION}
+    volumes:
+      - ./shared_artifacts:/app/shared_artifacts
+
+  architect:
+    build: ./agents/architect
+    ports:
+      - "8002:8000"
+    environment:
+      - GOOGLE_CLOUD_PROJECT=${GOOGLE_CLOUD_PROJECT}
+      - GOOGLE_CLOUD_LOCATION=${GOOGLE_CLOUD_LOCATION}
+    volumes:
+      - ./shared_artifacts:/app/shared_artifacts
+
+  ux-designer:
+    build: ./agents/ux-designer
+    ports:
+      - "8003:8000"
+    environment:
+      - GOOGLE_CLOUD_PROJECT=${GOOGLE_CLOUD_PROJECT}
+      - GOOGLE_CLOUD_LOCATION=${GOOGLE_CLOUD_LOCATION}
+    volumes:
+      - ./shared_artifacts:/app/shared_artifacts
+
+  critic:
+    build: ./agents/critic
+    ports:
+      - "8004:8000"
+    environment:
+      - GOOGLE_CLOUD_PROJECT=${GOOGLE_CLOUD_PROJECT}
+      - GOOGLE_CLOUD_LOCATION=${GOOGLE_CLOUD_LOCATION}
+    volumes:
+      - ./shared_artifacts:/app/shared_artifacts
+
+  orchestrator:
+    build: ./agents/orchestrator
+    ports:
+      - "8000:8000"
+    environment:
+      - GOOGLE_CLOUD_PROJECT=${GOOGLE_CLOUD_PROJECT}
+      - GOOGLE_CLOUD_LOCATION=${GOOGLE_CLOUD_LOCATION}
+      - ANALYST_URL=http://analyst:8000
+      - ARCHITECT_URL=http://architect:8000
+      - UX_DESIGNER_URL=http://ux-designer:8000
+      - CRITIC_URL=http://critic:8000
+    volumes:
+      - ./shared_artifacts:/app/shared_artifacts
+    depends_on:
+      - analyst
+      - architect
+      - ux-designer
+      - critic
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:8080"
+    environment:
+      - ORCHESTRATOR_URL=http://orchestrator:8000
+    depends_on:
+      - orchestrator
+
+volumes:
+  shared_artifacts:

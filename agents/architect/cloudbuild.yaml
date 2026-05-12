@@ -1,0 +1,51 @@
+steps:
+  # Build the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/architect:${_TAG}'
+      - '-t'
+      - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/architect:latest'
+      - '.'
+    dir: 'agents/architect'
+
+  # Push the container image to Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - '--all-tags'
+      - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/architect'
+
+  # Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'architect'
+      - '--image'
+      - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/architect:${_TAG}'
+      - '--region'
+      - '${_REGION}'
+      - '--platform'
+      - 'managed'
+      - '--cpu'
+      - '1'
+      - '--memory'
+      - '512Mi'
+      - '--allow-unauthenticated'
+      - '--set-env-vars'
+      - 'GOOGLE_CLOUD_PROJECT=${PROJECT_ID},GOOGLE_CLOUD_LOCATION=${_LOCATION},GOOGLE_GENAI_USE_VERTEXAI=True,LOGS_BUCKET_NAME=${_LOGS_BUCKET}'
+      - '--port'
+      - '8080'
+
+substitutions:
+  _REGION: us-central1
+  _LOCATION: global
+  _REPO_NAME: agent-ux
+  _LOGS_BUCKET: docs-agents-software
+  _TAG: latest
+
+options:
+  logging: CLOUD_LOGGING_ONLY

@@ -31,7 +31,11 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+- [ ] **Google ADK Alignment**: Does the design follow idiomatic ADK patterns?
+- [ ] **Performance**: Are performance goals defined and achievable?
+- [ ] **Security**: Has a proactive security review been conducted?
+- [ ] **Technical Debt**: Does the structure minimize complexity and debt?
+- [ ] **Testing**: Is there a plan for mandatory unit and integration tests?
 
 ## Project Structure
 

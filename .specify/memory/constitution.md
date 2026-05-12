@@ -1,50 +1,47 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+## Sync Impact Report
+- Version change: [TEMPLATE] → 1.0.0
+- List of modified principles:
+  - [PRINCIPLE_1] → I. Google ADK Alignment
+  - [PRINCIPLE_2] → II. Performance Optimization
+  - [PRINCIPLE_3] → III. Security-First Architecture
+  - [PRINCIPLE_4] → IV. Technical Debt Management
+  - [PRINCIPLE_5] → V. Testing & Validation Discipline
+- Added sections: Development Workflow, Quality Gates
+- Removed sections: None
+- Templates requiring updates:
+  - .specify/templates/tasks-template.md (✅ updated)
+  - .specify/templates/plan-template.md (✅ updated)
+  - .specify/templates/spec-template.md (✅ updated)
+- Follow-up TODOs: None
+-->
+
+# Agent UX Workshop Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Google ADK Alignment
+Use best practices and patterns for agents using Google's Agent Development Kit (ADK). This includes leveraging standard tool-use patterns, robust memory management, and idiomatic SDK usage to ensure reliability and scalability.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Performance Optimization
+Optimize performance across all agent operations. Minimize latency in LLM calls, optimize data processing pipelines, and ensure efficient resource utilization during tool execution to provide a responsive user experience.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Security-First Architecture
+Review and mitigate security vulnerabilities proactively. Implement strict input validation, follow the principle of least privilege for tool access, and ensure secrets are managed securely via environment variables. Regularly audit code for OWASP-style vulnerabilities.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Technical Debt Management
+Adhere to high software quality standards to minimize technical debt. Follow SOLID principles, maintain high modularity, and ensure code is self-documenting. Refactor incrementally and avoid "spaghetti" code.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Testing & Validation Discipline
+Create comprehensive tests for all agent behaviors. Every feature MUST include unit and integration tests. Validate results against expected outcomes using automated verification steps to ensure reliability and correctness.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Development Workflow
+Features must follow the Spec-Plan-Implement cycle. Each phase must be validated before moving to the next. The "Constitution Check" in the implementation plan is mandatory.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+## Quality Gates
+Automated security scans, performance benchmarks, and a full test suite pass are required before any feature is considered complete. Code reviews must verify compliance with these principles.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
+This constitution supersedes all other practices within this project. Amendments require documentation, version increment, and propagation to all dependent templates. All PRs must verify compliance with these core principles.
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
-
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2026-05-07 | **Last Amended**: 2026-05-07

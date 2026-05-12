@@ -1,0 +1,20 @@
+{
+  "name": "ux-designer",
+  "description": "UX Designer Agent that creates UI/UX mockups using Toolset Stitch.",
+  "url": "http://ux-designer:8000/a2a/app",
+  "version": "0.1.0",
+  "capabilities": {
+    "can_receive_task_updates": true,
+    "can_send_task_updates": true
+  },
+  "skills": [
+    {
+      "id": "ux-designer-model",
+      "name": "model",
+      "description": "I am a UX Designer. I generate UI/UX mockups and design systems.",
+      "tags": ["llm", "ux", "ui", "stitch"]
+    }
+  ],
+  "default_input_modes": ["text/plain"],
+  "default_output_modes": ["text/plain"]
+}

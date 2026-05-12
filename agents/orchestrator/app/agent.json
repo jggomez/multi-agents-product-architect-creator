@@ -1,0 +1,20 @@
+{
+  "name": "orchestrator",
+  "description": "Root Orchestrator Agent that coordinates the design system workflow.",
+  "url": "http://orchestrator:8000/a2a/app",
+  "version": "0.1.0",
+  "capabilities": {
+    "can_receive_task_updates": true,
+    "can_send_task_updates": true
+  },
+  "skills": [
+    {
+      "id": "orchestrator-model",
+      "name": "model",
+      "description": "I am the Root Orchestrator. I coordinate the work of specialized agents to deliver a complete design system.",
+      "tags": ["llm", "orchestration"]
+    }
+  ],
+  "default_input_modes": ["text/plain"],
+  "default_output_modes": ["text/plain"]
+}
