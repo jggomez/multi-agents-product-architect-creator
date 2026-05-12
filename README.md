@@ -53,6 +53,7 @@ The system eliminates manual hand-offs between product, architecture, and design
 ### System Diagram
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#1e293b', 'primaryTextColor': '#f8fafc', 'primaryBorderColor': '#334155', 'lineColor': '#334155', 'secondaryColor': '#0f172a', 'tertiaryColor': '#1e293b', 'edgeLabelBackground':'#f8fafc', 'nodeBorder':'#334155' }}}%%
 graph TB
     subgraph "Client Layer"
         FE["<b>Frontend</b><br/>(Agentic Studio UI)"]
@@ -117,7 +118,7 @@ graph TB
 ### Agent Communication Flow
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#1e293b', 'primaryTextColor': '#f8fafc', 'primaryBorderColor': '#334155', 'lineColor': '#38bdf8', 'secondaryColor': '#0f172a', 'tertiaryColor': '#1e293b', 'noteBkgColor': '#1e293b', 'noteTextColor': '#38bdf8', 'actorBkg': '#0f172a', 'actorBorder': '#334155', 'actorTextColor': '#f8fafc' }}}%%
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#1e293b', 'primaryTextColor': '#f8fafc', 'primaryBorderColor': '#334155', 'lineColor': '#334155', 'secondaryColor': '#0f172a', 'tertiaryColor': '#1e293b', 'noteBkgColor': '#f8fafc', 'noteTextColor': '#1e293b', 'actorBkg': '#1e293b', 'actorBorder': '#334155', 'actorTextColor': '#f8fafc', 'signalColor': '#334155', 'signalTextColor': '#1e293b', 'labelBoxBkgColor': '#f8fafc', 'labelBoxBorderColor': '#334155', 'labelTextColor': '#1e293b', 'loopTextColor': '#1e293b' }}}%%
 sequenceDiagram
     autonumber
     participant U as User (Frontend)
@@ -157,6 +158,7 @@ sequenceDiagram
 ### Deployment Architecture
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#1e293b', 'primaryTextColor': '#f8fafc', 'primaryBorderColor': '#334155', 'lineColor': '#334155', 'secondaryColor': '#0f172a', 'tertiaryColor': '#1e293b', 'edgeLabelBackground':'#f8fafc' }}}%%
 graph LR
     subgraph "Google Cloud Run"
         direction TB
